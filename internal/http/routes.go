@@ -2,6 +2,7 @@ package http
 
 import (
 	"net/http"
+	"sync/atomic"
 
 	"github.com/a-h/templ"
 	"github.com/codypotter/create-templ-app/internal/assets"
@@ -9,10 +10,13 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+var serverCount atomic.Int64
+
 func Register(r *gin.Engine, resolver *assets.Resolver, distPath string) {
 	asset := resolver.URL
 
-	// Static assets — in prod, CloudFront/S3 handles this; locally Go serves it directly.
+	// Serves static assets locally. If ASSET_BASE_URL points elsewhere
+	// (e.g. a CDN), these routes just go unused.
 	static := r.Group("/static")
 	static.Use(func(c *gin.Context) {
 		c.Header("Cache-Control", "public, max-age=31536000, immutable")
@@ -21,6 +25,10 @@ func Register(r *gin.Engine, resolver *assets.Resolver, distPath string) {
 
 	r.GET("/", func(c *gin.Context) {
 		render(c, http.StatusOK, views.Index(asset))
+	})
+
+	r.POST("/api/count", func(c *gin.Context) {
+		render(c, http.StatusOK, views.Counter(serverCount.Add(1)))
 	})
 }
 

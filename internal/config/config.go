@@ -14,7 +14,8 @@ type Config struct {
 	AssetsDistPath string
 
 	// AssetBaseURL is the base URL prepended to resolved asset filenames.
-	// In dev this is "/static". In prod it points at the CDN.
+	// Defaults to "/static" for local serving; point it elsewhere (e.g. a
+	// CDN) if assets are hosted outside this process.
 	AssetBaseURL string
 }
 

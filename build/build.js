@@ -11,6 +11,8 @@ const manifest = {}
 // Resolve the tailwindcss CLI entry point directly — avoids symlink issues in npm scripts.
 const twCLI = new URL('../node_modules/@tailwindcss/cli/dist/index.mjs', import.meta.url).pathname
 
+// Start clean so stale hashed files from previous builds don't linger.
+rmSync(outdir, { recursive: true, force: true })
 mkdirSync(outdir, { recursive: true })
 
 // --- CSS via tailwindcss CLI ---
