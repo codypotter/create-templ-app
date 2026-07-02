@@ -7,7 +7,7 @@ import (
 
 	"github.com/codypotter/create-templ-app/internal/assets"
 	"github.com/codypotter/create-templ-app/internal/config"
-	apphttp "github.com/codypotter/create-templ-app/internal/http"
+	"github.com/codypotter/create-templ-app/internal/http"
 	"github.com/gin-gonic/gin"
 )
 
@@ -21,7 +21,7 @@ func main() {
 	}
 
 	r := gin.Default()
-	apphttp.Register(r, resolver, cfg.AssetsDistPath)
+	http.Register(r, resolver, cfg.AssetsDistPath)
 
 	addr := fmt.Sprintf(":%s", cfg.Port)
 	log.Printf("listening on %s", addr)
