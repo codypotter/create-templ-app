@@ -13,7 +13,7 @@ import (
 var serverCount atomic.Int64
 
 func Register(r *gin.Engine, resolver *assets.Resolver, distPath string) {
-	asset := resolver.URL
+	renderer := views.NewRenderer(resolver.URL)
 
 	// Serves static assets locally. If ASSET_BASE_URL points elsewhere
 	// (e.g. a CDN), these routes just go unused.
@@ -24,11 +24,11 @@ func Register(r *gin.Engine, resolver *assets.Resolver, distPath string) {
 	static.Static("/", distPath)
 
 	r.GET("/", func(c *gin.Context) {
-		render(c, http.StatusOK, views.Index(asset))
+		render(c, http.StatusOK, renderer.Index())
 	})
 
 	r.POST("/api/count", func(c *gin.Context) {
-		render(c, http.StatusOK, views.Counter(serverCount.Add(1)))
+		render(c, http.StatusOK, renderer.Counter(serverCount.Add(1)))
 	})
 }
 
