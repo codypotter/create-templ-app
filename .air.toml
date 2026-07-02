@@ -1,0 +1,14 @@
+[build]
+  cmd = "templ generate && go build -o ./tmp/server ./cmd/server"
+  bin = "./tmp/server"
+  delay = 500
+  exclude_dir = ["internal/assets/dist", "node_modules", "tmp"]
+  include_ext = ["go", "templ"]
+  exclude_regex = ["_templ.go"]
+
+[log]
+  time = true
+
+[color]
+  build = "yellow"
+  runner = "green"
