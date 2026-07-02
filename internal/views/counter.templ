@@ -2,7 +2,7 @@ package views
 
 import "strconv"
 
-templ Counter(count int64) {
+templ (r Renderer) Counter(count int64) {
 	<div id="server-counter">
 		<button
 			hx-post="/api/count"
