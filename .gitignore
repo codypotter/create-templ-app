@@ -3,3 +3,4 @@ internal/assets/dist/
 tmp/
 bin/
 .env
+/cmd/create-templ-app/create-templ-app

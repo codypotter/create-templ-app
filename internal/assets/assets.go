@@ -32,7 +32,7 @@ func NewResolver(manifestPath, baseURL string) (*Resolver, error) {
 }
 
 // URL returns the full URL for a logical asset name.
-// e.g. URL("main.css") → "/static/main-a1b2c3.css" or "https://assets.com/main-a1b2c3.css"
+// e.g. URL("main.css") -> "/static/main-a1b2c3.css" or "https://assets.com/main-a1b2c3.css"
 func (r *Resolver) URL(name string) string {
 	hashed, ok := r.manifest[name]
 	if !ok {
