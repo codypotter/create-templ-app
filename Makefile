@@ -1,12 +1,18 @@
-.PHONY: dev build assets templ tidy
+.PHONY: dev build assets templ tidy air
 
-# Start frontend watcher, templ watcher, and Go server together
+# Run the frontend watcher and air together. air regenerates templ output
+# and rebuilds/restarts the Go server on its own, so that's the only other
+# process needed. Uses make's own -j job control for startup/shutdown
+# instead of hand-rolled process management.
 dev:
-	@echo "run 'make assets-watch', 'make templ-watch', and 'make run' in separate terminals"
-	@echo "or use a tool like overmind/foreman with a Procfile"
+	@$(MAKE) -j2 assets-watch air
 
 run:
 	go run ./cmd/server
+
+# Go hot-reloading via air (also runs templ generate on every rebuild)
+air:
+	air
 
 # One-shot frontend build
 assets:

@@ -19,13 +19,21 @@
 }
 ```
 
-The Go server reads this manifest at startup. `resolver.URL("main.css")` returns the full URL with the hashed filename. In dev that's `/static/main-a2a25137.css`; in prod it's `https://assets.com/main-a2a25137.css`.
+The Go server reads this manifest at startup. `resolver.URL("main.css")` returns the full URL with the hashed filename — `/static/main-a2a25137.css` by default, or wherever `ASSET_BASE_URL` points otherwise.
 
 ## Asset serving
 
-Locally, Go serves `/static/*` directly from `internal/assets/dist/`. In production, static assets are synced to S3 and served via CloudFront. The Go server only serves HTML — it never touches static files in prod.
+By default, Go serves `/static/*` directly from `internal/assets/dist/`. `ASSET_BASE_URL` lets asset URLs point elsewhere instead — e.g. a CDN in front of a bucket you sync `dist/` to — in which case the Go server only ever serves HTML and never touches the static files itself.
 
-`ASSET_BASE_URL` controls the base URL for asset resolution. Leave it unset in dev (defaults to `/static`); set it to the CDN URL in prod.
+Leave `ASSET_BASE_URL` unset to serve assets locally (defaults to `/static`).
+
+## Prerequisites
+
+- Go and Node.js/npm
+- `templ` CLI: `go install github.com/a-h/templ/cmd/templ@latest`
+- `air` (for `make dev`): `go install github.com/air-verse/air@latest`
+
+Make sure `$(go env GOPATH)/bin` is on your `PATH`.
 
 ## Running locally
 
@@ -43,13 +51,15 @@ templ generate
 go run ./cmd/server
 ```
 
-For active development, run these in parallel:
+For active development:
 
 ```bash
-npm run watch        # rebuilds CSS/JS on change
-templ generate --watch  # regenerates Go code on .templ changes
-air                  # hot-reloads the Go server
+make dev
 ```
+
+This runs `npm run watch` (rebuilds CSS/JS on change) and `air` (hot-reloads the Go server) in parallel. `air` already runs `templ generate` as part of its own build step (see `.air.toml`), so there's no separate templ watcher process needed.
+
+If you'd rather run things in separate terminals — e.g. to see templ's own watch output — `make assets-watch`, `make templ-watch`, and `make air` are still available individually.
 
 ## Environment variables
 
@@ -57,6 +67,6 @@ air                  # hot-reloads the Go server
 |---|---|---|
 | `PORT` | `8080` | HTTP listen port |
 | `ASSETS_DIST_PATH` | `internal/assets/dist` | Path to esbuild output directory |
-| `ASSET_BASE_URL` | `/static` | Base URL for asset resolution. Set to CDN URL in prod. |
+| `ASSET_BASE_URL` | `/static` | Base URL for asset resolution. Point it wherever assets are actually hosted, if not served locally. |
 
 See `.env.example`.

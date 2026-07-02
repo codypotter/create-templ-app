@@ -1,0 +1,16 @@
+package views
+
+import "strconv"
+
+templ Counter(count int64) {
+	<div id="server-counter">
+		<button
+			hx-post="/api/count"
+			hx-target="#server-counter"
+			hx-swap="outerHTML"
+			class="rounded bg-indigo-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-indigo-500"
+		>
+			Clicked { strconv.FormatInt(count, 10) } times (server)
+		</button>
+	</div>
+}
