@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>create-templ-app</title>
+    <meta name="description" content="Go + Gin + templ + Tailwind CSS v4 + htmx + Alpine.js, scaffolded with a single command." />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main>
+      <header>
+        <h1>create-templ-app</h1>
+        <p class="tagline">Go + Gin + templ + Tailwind CSS v4 + htmx + Alpine.js, scaffolded with a single command.</p>
+      </header>
+
+      <section>
+        <h2>Usage</h2>
+        <pre><code>go run github.com/codypotter/create-templ-app/cmd/create-templ-app@latest github.com/you/your-app
+cd your-app
+make tidy    # go mod tidy && npm install
+make dev</code></pre>
+        <p>
+          This copies the repo itself into <code>./your-app</code> and rewrites the module path throughout. You end
+          up with a normal, standalone Go module &mdash; no dependency on this repo, no generator lock-in to remove
+          later.
+        </p>
+      </section>
+
+      <section>
+        <h2>Why this stack</h2>
+        <p>
+          Server-rendered HTML with htmx and Alpine.js handling the interactive slivers, instead of a client-side
+          framework. <code>templ</code> compiles views to typed Go rather than parsing templates at runtime, and
+          Tailwind/esbuild are wired up with content-hashed, cacheable output from the start. The goal is to skip the
+          SPA tax &mdash; hydration bugs, client-side state sprawl, a build toolchain that reinvents itself every
+          year &mdash; for the large majority of apps that don't actually need it.
+        </p>
+      </section>
+
+      <section>
+        <h2>Stack</h2>
+        <ul>
+          <li><strong>Go + Gin</strong> &mdash; HTTP server, server-side rendering</li>
+          <li><strong>templ</strong> &mdash; HTML components compiled to Go</li>
+          <li><strong>Tailwind CSS v4</strong> &mdash; compiled via <code>@tailwindcss/cli</code></li>
+          <li><strong>Alpine.js + htmx</strong> &mdash; bundled via esbuild</li>
+        </ul>
+      </section>
+
+      <footer>
+        <a href="https://github.com/codypotter/create-templ-app">View on GitHub</a>
+      </footer>
+    </main>
+  </body>
+</html>
