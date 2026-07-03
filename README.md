@@ -29,11 +29,9 @@ Leave `ASSET_BASE_URL` unset to serve assets locally (defaults to `/static`).
 
 ## Prerequisites
 
-- Go and Node.js/npm
-- `templ` CLI: `go install github.com/a-h/templ/cmd/templ@latest`
-- `air` (for `make dev`): `go install github.com/air-verse/air@latest`
+- Go 1.24+ and Node.js/npm
 
-Make sure `$(go env GOPATH)/bin` is on your `PATH`.
+`templ` and `air` don't need a separate global install — they're pinned as Go tool dependencies (see the `tool (...)` block in `go.mod`, added via `go get -tool`). `go tool templ`/`go tool air` fetch and run the exact pinned version automatically, the same way `require` pins library versions.
 
 ## Running locally
 
@@ -45,7 +43,7 @@ npm install
 npm run build
 
 # generate templ → Go (must run before go build)
-templ generate
+go tool templ generate
 
 # start the server
 go run ./cmd/server

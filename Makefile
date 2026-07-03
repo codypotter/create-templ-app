@@ -12,7 +12,7 @@ run:
 
 # Go hot-reloading via air (also runs templ generate on every rebuild)
 air:
-	air
+	go tool air
 
 # One-shot frontend build
 assets:
@@ -24,11 +24,11 @@ assets-watch:
 
 # Generate templ → Go
 templ:
-	templ generate
+	go tool templ generate
 
 # Templ in watch mode (for dev)
 templ-watch:
-	templ generate --watch
+	go tool templ generate --watch
 
 # Full production build
 build: assets templ
