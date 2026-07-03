@@ -11,7 +11,7 @@ Go + Gin + templ + Tailwind CSS v4 + htmx + Alpine.js, scaffolded with a single 
 
 ## Prerequisites
 
-- Go 1.24+
+- Go 1.25+
 - Node.js/npm
 
 ## Getting started
