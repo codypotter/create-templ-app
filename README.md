@@ -18,20 +18,10 @@ Go + Gin + templ + Tailwind CSS v4 + htmx + Alpine.js, scaffolded with a single 
 
 ```bash
 npm install
-npm run build
-go tool templ generate
-go run ./cmd/server
-```
-
-Open http://localhost:8080.
-
-## Development
-
-```bash
 make dev
 ```
 
-Rebuilds CSS/JS and hot-reloads the Go server on every change.
+Open http://localhost:8080. Rebuilds CSS/JS and hot-reloads the Go server on every change.
 
 ## Build
 
