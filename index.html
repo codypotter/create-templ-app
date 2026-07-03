@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>create-templ-app</title>
-    <meta name="description" content="Go + Gin + templ + Tailwind CSS v4 + htmx + Alpine.js, scaffolded with a single command." />
+    <meta name="description" content="Go + templ + Tailwind CSS v4 + htmx + Alpine.js, scaffolded with a single command." />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
@@ -14,7 +14,6 @@
         <p class="tagline">A minimal Go web stack, scaffolded with a single command.</p>
         <ul class="badges">
           <li class="badge badge-go">Go</li>
-          <li class="badge badge-gin">Gin</li>
           <li class="badge badge-templ">templ</li>
           <li class="badge badge-tailwind">Tailwind CSS v4</li>
           <li class="badge badge-htmx">htmx</li>
@@ -38,11 +37,10 @@ make dev</code></pre>
       <section>
         <h2>Why this stack</h2>
         <p>
-          Server-rendered HTML with htmx and Alpine.js handling the interactive slivers, instead of a client-side
-          framework. <code>templ</code> compiles views to typed Go rather than parsing templates at runtime, and
-          Tailwind/esbuild are wired up with content-hashed, cacheable output from the start. The goal is to skip the
-          SPA tax &mdash; hydration bugs, client-side state sprawl, a build toolchain that reinvents itself every
-          year &mdash; for the large majority of apps that don't actually need it.
+          Server-rendered HTML with htmx and Alpine.js handling interactivity, instead of a client-side framework.
+          <code>templ</code> compiles views to typed Go rather than parsing templates at runtime, and Tailwind/esbuild
+          are wired up with content-hashed, cacheable output. The goal is to skip the SPA tax for the large majority
+          of apps that don't need it.
         </p>
       </section>
 
