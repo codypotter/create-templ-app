@@ -35,6 +35,61 @@ h1 {
   margin: 0;
 }
 
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  list-style: none;
+  padding: 0;
+  margin: 1.25rem 0 0;
+}
+
+.badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.25rem 0.625rem;
+  border-radius: 9999px;
+  border: 1px solid;
+  white-space: nowrap;
+}
+
+.badge-go {
+  color: #7dd3fc;
+  background: rgba(56, 189, 248, 0.1);
+  border-color: rgba(56, 189, 248, 0.35);
+}
+
+.badge-gin {
+  color: #a5b4fc;
+  background: rgba(99, 102, 241, 0.1);
+  border-color: rgba(99, 102, 241, 0.35);
+}
+
+.badge-templ {
+  color: #6ee7b7;
+  background: rgba(16, 185, 129, 0.1);
+  border-color: rgba(16, 185, 129, 0.35);
+}
+
+.badge-tailwind {
+  color: #67e8f9;
+  background: rgba(34, 211, 238, 0.1);
+  border-color: rgba(34, 211, 238, 0.35);
+}
+
+.badge-htmx {
+  color: #fcd34d;
+  background: rgba(251, 191, 36, 0.1);
+  border-color: rgba(251, 191, 36, 0.35);
+}
+
+.badge-alpine {
+  color: #fda4af;
+  background: rgba(251, 113, 133, 0.1);
+  border-color: rgba(251, 113, 133, 0.35);
+}
+
 section {
   margin-bottom: 2.5rem;
 }
@@ -82,6 +137,41 @@ ul {
 
 li {
   margin-bottom: 0.375rem;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.875rem;
+}
+
+.card {
+  background: #0b1120;
+  border: 1px solid #1f2937;
+  border-radius: 0.5rem;
+  padding: 0.875rem 1rem;
+}
+
+.card .badge {
+  margin: 0 0.375rem 0.375rem 0;
+}
+
+.card h3 {
+  margin: 0;
+  font-size: 0.9375rem;
+  font-weight: 600;
+}
+
+.card p {
+  margin: 0.375rem 0 0;
+  font-size: 0.875rem;
+  color: #9ca3af;
+}
+
+@media (max-width: 30rem) {
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 footer {

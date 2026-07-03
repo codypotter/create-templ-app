@@ -11,7 +11,15 @@
     <main>
       <header>
         <h1>create-templ-app</h1>
-        <p class="tagline">Go + Gin + templ + Tailwind CSS v4 + htmx + Alpine.js, scaffolded with a single command.</p>
+        <p class="tagline">A minimal Go web stack, scaffolded with a single command.</p>
+        <ul class="badges">
+          <li class="badge badge-go">Go</li>
+          <li class="badge badge-gin">Gin</li>
+          <li class="badge badge-templ">templ</li>
+          <li class="badge badge-tailwind">Tailwind CSS v4</li>
+          <li class="badge badge-htmx">htmx</li>
+          <li class="badge badge-alpine">Alpine.js</li>
+        </ul>
       </header>
 
       <section>
@@ -39,13 +47,47 @@ make dev</code></pre>
       </section>
 
       <section>
+        <h2>Built to be changed</h2>
+        <div class="card-grid">
+          <article class="card">
+            <h3>Router</h3>
+            <p>Gin only shows up in one ~40-line file. Views render to any <code>io.Writer</code>, so nothing about templ or htmx ties you to it &mdash; swap in chi, echo, or stdlib <code>net/http</code> whenever you want.</p>
+          </article>
+          <article class="card">
+            <h3>Frontend build</h3>
+            <p><code>build/build.js</code> is a plain esbuild script you can read start to finish in a minute. Add loaders, TypeScript, more entry points &mdash; no framework CLI standing between you and the config.</p>
+          </article>
+          <article class="card">
+            <h3>Dependencies</h3>
+            <p>Three direct Go dependencies for the whole server. Easy to audit, fast to build, nothing to wait on for security patches.</p>
+          </article>
+          <article class="card">
+            <h3>Deploy</h3>
+            <p>Go compiles to a single binary; assets are pre-built and content-hashed. Shipping is "copy a binary and a folder" &mdash; no Node runtime in production.</p>
+          </article>
+        </div>
+      </section>
+
+      <section>
         <h2>Stack</h2>
-        <ul>
-          <li><strong>Go + Gin</strong> &mdash; HTTP server, server-side rendering</li>
-          <li><strong>templ</strong> &mdash; HTML components compiled to Go</li>
-          <li><strong>Tailwind CSS v4</strong> &mdash; compiled via <code>@tailwindcss/cli</code></li>
-          <li><strong>Alpine.js + htmx</strong> &mdash; bundled via esbuild</li>
-        </ul>
+        <div class="card-grid">
+          <article class="card">
+            <span class="badge badge-go">Go</span><span class="badge badge-gin">Gin</span>
+            <p>HTTP server, server-side rendering</p>
+          </article>
+          <article class="card">
+            <span class="badge badge-templ">templ</span>
+            <p>HTML components compiled to Go</p>
+          </article>
+          <article class="card">
+            <span class="badge badge-tailwind">Tailwind CSS v4</span>
+            <p>Compiled via <code>@tailwindcss/cli</code></p>
+          </article>
+          <article class="card">
+            <span class="badge badge-htmx">htmx</span><span class="badge badge-alpine">Alpine.js</span>
+            <p>Bundled via esbuild</p>
+          </article>
+        </div>
       </section>
 
       <footer>
