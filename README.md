@@ -2,6 +2,8 @@
 
 Go + Gin + templ + Tailwind CSS v4 + htmx + Alpine.js, scaffolded with a single command.
 
+[codypotter.github.io/create-templ-app](https://codypotter.github.io/create-templ-app/)
+
 ## Usage
 
 ```bash
