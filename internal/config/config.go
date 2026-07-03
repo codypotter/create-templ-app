@@ -3,6 +3,8 @@ package config
 import (
 	"os"
 	"strings"
+
+	"github.com/joho/godotenv"
 )
 
 type Config struct {
@@ -20,6 +22,8 @@ type Config struct {
 }
 
 func Load() Config {
+	_ = godotenv.Load()
+
 	return Config{
 		Port:           envOr("PORT", "8080"),
 		AssetsDistPath: envOr("ASSETS_DIST_PATH", "internal/assets/dist"),
