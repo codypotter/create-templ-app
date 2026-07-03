@@ -1,6 +1,6 @@
 # create-templ-app
 
-Go + Gin + templ + Tailwind CSS v4 + htmx + Alpine.js, scaffolded with a single command.
+Go + templ + Tailwind CSS v4 + htmx + Alpine.js, scaffolded with a single command.
 
 [codypotter.github.io/create-templ-app](https://codypotter.github.io/create-templ-app/)
 
@@ -21,7 +21,7 @@ Server-rendered HTML with htmx and Alpine.js handling interactivity, instead of 
 
 ## Stack
 
-- **Go + Gin** — HTTP server, server-side rendering
+- **Go** — HTTP server, server-side rendering (Gin under the hood, easy to swap)
 - **templ** — HTML components compiled to Go
 - **Tailwind CSS v4** — compiled via `@tailwindcss/cli`
 - **Alpine.js + htmx** — bundled via esbuild
